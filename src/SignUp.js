@@ -2,22 +2,18 @@ import style from "./stylesheets/signup.module.css";
 import { FaGoogle } from "react-icons/fa";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from './Components/Footer.js'
-import { register } from './redux/action/signupAction.js'
-import { useDispatch } from 'react-redux'
+
 
 
 // library.add(faGoogle)
 
 const SignUp = () => {
 
-  const dispatch = useDispatch();
-
   const [values, setValues] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
   });
   const [submitted, setSubmitted] = useState(false)
   const [valid, SetValid] = useState(false)
@@ -44,7 +40,6 @@ const SignUp = () => {
       SetValid(true);
     }
     setSubmitted(true);
-    dispatch(register(values))
   }
 
   return (
@@ -79,7 +74,6 @@ const SignUp = () => {
               <div className={style.section0}>
                 <label className={style.name}>Your name <br/>{submitted && !values.name ? <span>Please enter your name</span> : null}</label>
                 <input
-                  autoComplete="off"
                   onChange={handleNameInputChange}
                   value={values.name}
                   className={style.inputName}
@@ -93,11 +87,10 @@ const SignUp = () => {
               <div className={style.section1}>
                 <label className={style.email}>Your email<br/> {submitted && !values.email ? <span>Please enter your email</span> : null}</label>
                 <input
-                  autoComplete="off"
                   onChange={handleEmailInputChange}
                   value={values.email}
                   className={style.inputEmail}
-                  type="email"
+                  type="text"
                   id="mail"
                   name="email"
                   placeholder="stuff@gmail.com.."
@@ -107,7 +100,6 @@ const SignUp = () => {
               <div className={style.section2}>
                 <label className={style.password}>Your password<br/> {submitted && !values.password ? <span>Please enter a password</span> : null}</label>
                 <input
-                  autoComplete="off"
                   onChange={handlePasswordInputChange}
                   value={values.password}
                   type="password"
@@ -121,7 +113,6 @@ const SignUp = () => {
               <div className={style.section3}>
                 <label className={style.confirmPassword}>Confirm password<br/> {submitted && !values.confirmPassword ? <span>Please confirm your password</span> : null}</label>
                 <input
-                  autoComplete="off"
                   onChange={handleConfirmPasswordInputChange}
                   value={values.confirmPassword}
                   type="password"
@@ -134,7 +125,7 @@ const SignUp = () => {
                 
               </div>
               <div className={style.section4}>
-                <button onClick={register} type="submit" className={style.btn2}>
+                <button type="submit" className={style.btn2}>
                   Sign Up
                 </button>
               </div>
@@ -142,7 +133,6 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
